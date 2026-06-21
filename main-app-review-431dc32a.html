@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乐鱼体育 · 轻量导航介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #faf7f2;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      color: #2c2b28;
+      line-height: 1.65;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* 顶部导航 */
+    .top-nav {
+      background: #ffffff;
+      border-bottom: 1px solid #e6e0d6;
+      padding: 0.9rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-brand {
+      font-weight: 500;
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
+      color: #1f3a3f;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4e4b47;
+      font-size: 0.95rem;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: #b87c4b;
+    }
+
+    /* 主体容器 */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 1.8rem 3rem;
+      flex: 1;
+    }
+
+    /* Hero 区 */
+    .hero {
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #1e2e2b;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #5b5650;
+      max-width: 72%;
+    }
+
+    @media (max-width: 600px) {
+      .hero p {
+        max-width: 100%;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* 文章式介绍 */
+    .intro-text {
+      background: #ffffffd9;
+      padding: 1.8rem 2rem;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border-left: 4px solid #b87c4b;
+      margin-bottom: 2.8rem;
+    }
+
+    .intro-text p {
+      margin-bottom: 1rem;
+    }
+
+    .intro-text a {
+      color: #b87c4b;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    .intro-text a:hover {
+      color: #8f6238;
+    }
+
+    /* 三个场景模块 (卡片式) */
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin: 2.8rem 0 3rem;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.8rem 1.4rem;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+      border: 1px solid #ece6dd;
+      transition: box-shadow 0.2s;
+    }
+
+    .scene-card:hover {
+      box-shadow: 0 10px 22px rgba(0,0,0,0.04);
+    }
+
+    .scene-card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      color: #1f3a3f;
+    }
+
+    .scene-card p {
+      font-size: 0.95rem;
+      color: #5b5650;
+      margin-bottom: 0.4rem;
+    }
+
+    .scene-card .tag {
+      display: inline-block;
+      background: #f3ede6;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: #6e6052;
+      margin-top: 0.6rem;
+    }
+
+    @media (max-width: 700px) {
+      .scenes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+    }
+
+    /* 引用块 / 提示框 */
+    .callout {
+      background: #f3ede6;
+      border-radius: 12px;
+      padding: 1.2rem 1.8rem;
+      margin: 2rem 0 2.2rem;
+      border-left: 4px solid #b87c4b;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .callout-icon {
+      font-size: 1.4rem;
+      line-height: 1.4;
+      color: #b87c4b;
+    }
+
+    .callout-content {
+      flex: 1;
+    }
+
+    .callout-content p {
+      font-size: 0.95rem;
+      color: #3f3b36;
+    }
+
+    .callout-content strong {
+      color: #1e2e2b;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      margin-top: 2.5rem;
+    }
+
+    .faq-mini h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      color: #1e2e2b;
+    }
+
+    .faq-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid #e6e0d6;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      color: #2c2b28;
+    }
+
+    .faq-answer {
+      font-size: 0.95rem;
+      color: #5b5650;
+    }
+
+    .faq-answer a {
+      color: #b87c4b;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .faq-answer a:hover {
+      color: #8f6238;
+    }
+
+    /* 底部 */
+    .footer-note {
+      margin-top: 3.5rem;
+      border-top: 1px solid #e6e0d6;
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #7b7268;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 480px) {
+      .top-nav {
+        padding: 0.7rem 1.2rem;
+      }
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .container {
+        padding: 1.8rem 1.2rem 2rem;
+      }
+      .intro-text {
+        padding: 1.2rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <header class="top-nav">
+    <span class="nav-brand">乐鱼体育</span>
+    <ul class="nav-links">
+      <li><a href="#intro">介绍</a></li>
+      <li><a href="#scenes">场景</a></li>
+      <li><a href="#faq">常见说明</a></li>
+    </ul>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>快速识别 <br>网站定位与用途</h1>
+      <p>如果你正在找「乐鱼体育」能做什么、适合谁用，这里用最直接的方式告诉你。</p>
+    </section>
+
+    <!-- 核心介绍 + 链接自然嵌入 -->
+    <section class="intro-text" id="intro">
+      <p><strong>乐鱼体育</strong> 是一个综合体育信息与内容服务的平台，主要面向对体育赛事、运动资讯和线上互动感兴趣的普通用户。无论你是想快速了解某个联赛动态，还是希望找到志趣相投的体育圈子，都可以在 <a href="https://main-app-leyu.com.cn">乐鱼体育</a> 里找到对应的内容板块。网站整体风格简洁，信息组织偏实用，没有过多花哨的装饰，适合直接浏览。</p>
+      <p>很多新用户第一次访问时，都会先翻看热门赛事板块和社区讨论区——这两个区域通常更新最快，也最能反映平台当前的使用氛围。如果你只是想简单看看体育新闻或赛程，直接进入首页就能看到核心模块。</p>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <section id="scenes">
+      <h2 style="font-weight:500; font-size:1.5rem; margin-bottom:0.2rem; color:#1e2e2b;">三个典型使用场景</h2>
+      <p style="color:#5b5650; margin-bottom:1.2rem;">不同的人带着不同目的，这里列举最常见的三种。</p>
+
+      <div class="scenes-grid">
+        <div class="scene-card">
+          <h3>🏀 赛前快速查资料</h3>
+          <p>比赛开始前几分钟，想确认两队近期交锋记录、伤病名单。直接打开对应赛事页面，信息基本都在首屏，不用翻好几层菜单。</p>
+          <span class="tag">效率优先</span>
+        </div>
+        <div class="scene-card">
+          <h3>⚽ 赛后找讨论和回放</h3>
+          <p>看完直播不过瘾，去社区看看其他球迷的吐槽或分析。很多人也会在评论区找高清回放链接或动图，互动氛围比较直接。</p>
+          <span class="tag">社交延伸</span>
+        </div>
+        <div class="scene-card">
+          <h3>🎾 关注特定联赛或球队</h3>
+          <p>只关心某几个联赛或主队动态，用收藏或关注功能订阅。之后每次登录都会优先推送相关新闻，不用每次手动搜索。</p>
+          <span class="tag">个性化</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 引用块 / 提示框 -->
+    <div class="callout">
+      <span class="callout-icon">💡</span>
+      <div class="callout-content">
+        <p><strong>一点小提示：</strong>如果你是第一次使用这类体育内容平台，建议先花几分钟浏览一下首页的导航分类。很多功能入口都放在显眼位置，比如赛事直播、数据统计、社区热帖。 <a href="https://main-app-leyu.com.cn" style="color:#b87c4b;text-decoration:underline;">乐鱼体育</a> 的页面结构偏扁平，通常点两次就能到达你想看的内容。</p>
+      </div>
+    </div>
+
+    <!-- 常见说明 FAQ 摘要 -->
+    <section class="faq-mini" id="faq">
+      <h2>常见说明（简要）</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">▪ 需要注册才能浏览吗？</div>
+        <div class="faq-answer">大部分内容（新闻、赛程、基础数据）无需注册即可查看。部分互动功能（评论、收藏、订阅）需要创建账号，注册流程很简单。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">▪ 网站适合只看不说的用户吗？</div>
+        <div class="faq-answer">完全可以。内容以信息展示为主，社区互动只是其中一部分。很多用户只是每天上来看看比分和转会新闻，从不发言，体验不受影响。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">▪ 移动端浏览体验怎么样？</div>
+        <div class="faq-answer">页面针对手机做了自适应，菜单折叠、字体适中。如果你常用手机看体育资讯，直接通过浏览器打开 <a href="https://main-app-leyu.com.cn">乐鱼体育</a> 即可，不用额外下载 App（当然平台也提供移动端版本）。</div>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      页面仅作介绍用途 · 内容基于平台公开功能描述
+    </div>
+  </main>
+</body>
+</html>
